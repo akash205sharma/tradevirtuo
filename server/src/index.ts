@@ -23,10 +23,16 @@ app.use(express.json());
 app.use(cookieParser())
 
 app.use("/auth", authRoutes);
+app.use("/image", authRoutes);
 
 app.get("/", async (req, res) => {
     res.send("hello");
 })
+
+
+
+
+
 
 app.listen(port, () => console.log("kya hukum hai mere aka"));
 

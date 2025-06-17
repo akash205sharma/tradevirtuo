@@ -3,8 +3,10 @@ import express, { json } from "express";
 import { signupInput } from "../middleware/validate";
 import { User } from "../models/schema";
 import { connectDb } from "../config/db";
+import { retrieveImage, storeImage } from "./storeimage";
 const SECRET = process.env.JWT_SECRET
 const router = express.Router();
+
 
 
 router.post("/signup", async (req, res) => {
@@ -57,6 +59,7 @@ router.post("/signup", async (req, res) => {
 })
 
 
+
 router.post("/login", async (req, res) => {
 
 	try {
@@ -90,6 +93,33 @@ router.post("/login", async (req, res) => {
 		res.status(404).json({ message: "not able to login" });
 	}
 })
+
+
+
+router.post("/image", async (req, res) => {
+	
+	console.log("going to add image");
+
+	try {
+
+		// await storeImage("i3.png");
+		
+		await retrieveImage("i3.png","output3.jpg");
+		// await retrieveImage("i4.png","output4.jpg");
+		
+		
+		console.log("came back image stored ")
+		res.json("image stored successfully")
+
+	} catch (error) {
+		console.log("came back error ",error)
+
+		res.json("Not able to add")
+
+	}
+	
+})
+
 
 export default router;
 

@@ -29,7 +29,7 @@ const login = () => {
     const [islogin, setIslogin] = useState(1);
 
     const [user, setUser] = useState({
-        'username': "ak",
+        'username': "Akash205Sharma",
         'name': '',
         'email': '',
         'password': '12345678',
